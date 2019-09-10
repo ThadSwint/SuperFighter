@@ -5,7 +5,7 @@ namespace Super_Fighter
 {
     public class Wizard : Hero
     {
-        private static readonly Random _random = new Random();
+        private static Random _random = new Random();
 
         public Wizard(string name) : base(name)
         {
@@ -17,18 +17,16 @@ namespace Super_Fighter
 
         public override double Attack()
         {
-            var x = Attacks.ToList()[_random.Next(Attacks.Count)];
+            var x = Attacks.ToList()[_random.Next(Attacks.Count - 1)];
             Console.WriteLine(Name + " throws " + x.Key + " @ : " + x.Value + " damage");
             return x.Value;
         }
 
         public override double Defend()
         {
-            var x = Defends.ToList()[_random.Next(Attacks.Count)];
+            var x = Defends.ToList()[_random.Next(Attacks.Count - 1)];
             Console.WriteLine(Name + " counters with " + x.Key + " for : " + x.Value);
             return x.Value;
         }
-
-        private static int GetRandomNumber(int low, int high) => _random.Next();
     }
 }
